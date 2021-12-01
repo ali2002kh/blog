@@ -1,0 +1,168 @@
+ @media only screen and (max-width: 600px) {
+            div.splash{
+                display: none;
+                width:0;
+            }
+
+        div.login{
+	        margin: 15px 20px;
+            direction: rtl;
+            text-align:right;
+            width:90%;
+	    }
+
+
+	    div.tbox{
+	        width: 90%;
+	        margin-right: 2%;
+	        margin-left: 10%;
+	        margin-bottom: 10px;
+	        margin-top: 7px;
+	        height: 45px;
+	        padding-left: 10px;
+	        border-top-left-radius: 70px;
+            border-top-right-radius: 70px;
+            border-bottom-left-radius: 70px;
+            border-bottom-right-radius: 70px;
+	        border: 1px solid #a6a6a6;
+	        outline: none;
+	        font-size: 17px;
+	        transition: 0.6s;
+	        color: #a6a6a6;
+	        font-size: 15px;
+	    }
+
+	    div.login-box{
+        	        border-radius: 4px;
+        	        background-color: #fff;
+        	        width:400px;
+        	        margin-top: 70px;
+                    box-shadow: 10px 10px 70px 10px #00001a;
+                    border-radius:2%;
+        }
+     }
+
+        .splash{
+            margin: 15px 20px;
+            direction: rtl;
+            text-align:right;
+            width:26%;
+        }
+
+
+        body{
+            background-color: #00004d;
+            font-family: tahoma,sans-serif;
+            }
+
+	    .main-container{
+	        display: grid;
+	        justify-content: center;
+	        margin-top: 65px;
+	        }
+
+	    .login-box{
+	        border-radius: 4px;
+	        background-color: #fff;
+	        width:600px;
+	        margin-top: 70px;
+            box-shadow: 10px 10px 70px 10px #00001a;
+            border-radius:2%;
+	        }
+
+        .side{
+            border-radius: 4px;
+            background-color: pink;
+            margin-top: 70px;
+            border-radius:2%;
+        }
+
+	    .header{
+	        height: 100px;
+		    border-top-left-radius: 10px;
+		    border-top-right-radius: 10px;
+		    display: flex;
+		    justify-content: flex-start;
+		    align-items: center;
+		    color: gray;
+		    margin-right:5%;
+		    }
+
+	    .tbox{
+	        width: 90%;
+	        margin-right: 2%;
+	        margin-left: 2%;
+	        margin-bottom: 10px;
+	        margin-top: 7px;
+	        height: 45px;
+	        padding-left: 10px;
+
+	        border-top-left-radius: 70px;
+            border-top-right-radius: 70px;
+            border-bottom-left-radius: 70px;
+            border-bottom-right-radius: 70px;
+
+	        border: 1px solid #a6a6a6;
+	        outline: none;
+	        font-size: 17px;
+	        transition: 0.6s;
+	        color: #a6a6a6;
+	        font-size: 15px;
+	    }
+
+	    .tbox:focus{
+	        border: 1px solid black;
+	        transition: 0.6s;
+	        color: gray;
+	    }
+
+	    .login{
+	        margin: 15px 20px;
+            direction: rtl;
+            text-align:right;
+            width:65%;
+	    }
+
+	    .btn{
+	        border: 1px solid #f5f5f5;
+	        width: 90%;
+	        padding: 15px 0;
+	        border-radius: 4px;
+	        margin-top: 10px;
+	        margin-bottom: 10px;
+		    background-color: #004f99;
+		    color: #f5f5f5;
+		    font-size: 1.2rem;
+		    outline: none;
+		    transition: 0.6s;
+            border-radius: 50px;
+            margin-right: 3%;
+		}
+
+	.btn:hover{
+	    background-color:#99ceff;
+	    color:gray;
+	    transition: 0.6s;
+	    cursor: pointer;
+	    }
+
+	.forget-box{
+	    float: right;
+	    margin-top:5px;
+	    margin-bottom:5px;
+	    font-size:40px;
+	    font-family:tahoma;
+	}
+
+	.link{
+	    color: darkBlue;
+	    text-decoration:none;
+	    font-size:13px;
+	    text-alignment:left;
+	    font-family:tahoma;
+	}
+
+	.link:hover{
+	    color: gray;
+	    transition: 0.6s;
+	}

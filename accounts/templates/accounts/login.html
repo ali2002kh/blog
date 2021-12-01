@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'theme.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Login Page</title>
+</head>
+<body>
+<div class="main-container">
+
+    <div class="login-box">
+
+        <!--other-->
+        <form class="login"  action="{% url 'accounts:login' %}" method="post">
+
+            <div class="form-control1">
+                <div style="text-align:left; margin-top:4%; margin-left:4%;">
+                    <a href="{% url 'accounts:signup' %}" class="link"><em><b>حسابی ندارید؟</b></em></a>
+                </div>
+                <div class="header">
+                    <h2>ورود</h2>
+                </div>
+                <label style="color:gray; margin-right:3%; font-size:15px;"><em>نام کاربری:</em></label>
+                <br>
+                <input type="text" class="tbox" name="username" required />
+            </div>
+
+            <div class="form-control1">
+                <label style="color:gray; margin-right:3%; font-size:15px;"><em> رمز عبور: </em></label>
+                <br>
+                <input type="password" class="tbox" name="password" required />
+            </div>
+            {% csrf_token %}
+            <div class="form-control1">
+                <input type="submit" value="ورود به حساب" class="btn" />
+            </div>
+            <div class="header"></div>
+        </form>
+    </div>
+</div>
+
+<div class="header"></div>
+</body>
+</html>
