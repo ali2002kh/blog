@@ -1,0 +1,244 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'lightMode.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="icon" href="Icon/icon.png">
+    <title>Home</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body>
+<div id="container">
+
+    <div id="top"></div>
+
+    <div id="header">
+
+        <a href="#top" style=" padding:10px 15px; font-size:20px; color:#424874; z-index:1; position:fixed; bottom:30px; right:30px;  background-color:white; border-radius:50%;" ><i class="fa fa-angle-up"></i></a>
+
+        <nav>
+            <input type="checkbox" id="check">
+            <label for="check" class="check-btn">
+                <i class="fas fa-bars"></i>
+            </label>
+
+            <label class="logo">
+                <img src="images/logo.jpg" style="width:90px; height:70px; margin-top:5px; border-top-left-radius:100px; border-bottom-left-radius:50px; border-top-right-radius:50px; border-bottom-right-radius:100px;  box-shadow: 0px 0px 20px 0px #1a1a1a;"/>
+            </label>
+            <label class="logo"> CNN </label>
+            <ul>
+                <li><a href="Log in and Sign up page/Login.html"><b>ورود</b></a></li>
+
+                <li><a href="Log in and Sign up page/SignUp.html"><b>ثبت نام</b></a></li>
+
+                <li><a href="#" id="darkLight" style="padding:30px;"><b>☽</b></a></li>
+
+                <li id="drop"><a id="empty">
+                    <div class="dropdown" >
+                        <button href="#" style="padding: 29px 29px;" class="dropbtn"><i class="fa fa-caret-down"></i><b> صفحه اخبار </b></button>
+                        <div class="dropdown-content" >
+                            <a href="List of news/newsList.html#siasi">سیاسی</a>
+                            <a href="List of news/newsList.html#eghtesadi" >اقتصادی</a>
+                            <a href="List of news/newsList.html#tech" >تکنولوژی</a>
+                            <a href="List of news/newsList.html#covid" >covid 19</a>
+                            <a href="List of news/newsList.html#fun" >سرگرمی</a>
+                            <a href="List of news/newsList.html#elmi" >علمی</a>
+                            <a href="List of news/newsList.html#farhangi" >فرهنگی</a>
+                        </div>
+                    </div>
+                </a></li>
+                <li>
+                    <a href="index.html" ><b> صفحه اصلی </b><i class="fa fa-fw fa-home"></i></a>
+                </li>
+            </ul>
+        </nav>
+
+        <!--end of nav bar-->
+<div class="row">
+        <div class="column6">
+            <div class="mainPar" style="width:100%;">
+                <img src="images/pic9.jpg" class="smallPic" />
+                چرا بعضی‌ها کرونا نمی‌گیرند؟<br>
+                دانشمندان با تحلیل نمونه‌های حاد از بیماران کرونایی پی برده‌اند که چگونه تفاوت‌های ژنتیکی بر سلول‌های ایمنی ما تأثیر می‌گذارد...
+            <br><br>
+                <a href="News/9.html"> ادامه مطلب </a><br>
+            </div>
+
+            <br><br>
+
+            <div class="mainPar" style="width:100%;">
+                <img src="images/pic6.jpg" class="smallPic" />
+                واگذاری کشت‌وصنعت مغان به یک بدهکار کلان بانکی چگونه رخ داد؟ /مروری بر داستان حراج «نگین کشاورزی ایران»<br>
+                در حالیکه اخیراً زمزمه‌هایی مبنی بر امکان اعاده دادرسی در ...
+
+                <br><br><a href="News/6.html"> ادامه مطلب</a><br>
+            </div>
+
+        </div>
+        <div class="column5" style="text-align:center; " >
+
+            <div style="max-width:800px; padding-left:50px;">
+                <img class="mySlides" src="images/pic2.webp" >
+                <img class="mySlides" src="images/pic7.jpg" >
+                <img class="mySlides" src="images/pic9.jpg" >
+            </div>
+                <br>
+                <button class="slideShowBtn"  onclick="plusDivs(-1)" style="margin-right:20%;" >❮</button>
+
+                <button class="slideNumbers" onclick="currentDiv(1)" ></button>
+                <button class="slideNumbers" onclick="currentDiv(2)" ></button>
+                <button class="slideNumbers" onclick="currentDiv(3)" ></button>
+
+                <button class="slideShowBtn" onclick="plusDivs(1)" style="margin-left:20%;">❯</button>
+
+
+
+
+
+        </div>
+</div>
+
+
+    </div>
+
+    <div id="middle">
+
+        <div class="row">
+
+            <div class="column3">
+
+                <div class="newsPar" style="box-shadow:0 0 0 0; border-radius:10px; width:90%; border:none; width:100%; margin-top:70px; margin-right:100px;"><img src="images/error.png" style="width:100%; float:none; font-size:10px; " />رنگ صفحه‌ی مرگ که در ویندوز ۱۱ از آبی به مشکی تغییریافته بود در آپدیت جدید ویندوز ۱۱ به آبی بازگشته است. <br><a href="News/1.html">ادامه مطلب</a><br></div>
+
+                <br><br><br>
+
+                <a href="https://exiracademy.org" target="_blank"><img src="gifs/ad.gif" style="width:90%; margin:5% auto 5%;" /></a>
+                <br>
+                <a href="https://www.si24.ir/telematics?utm_source=isna&utm_medium=banner&utm_campaign=telematics" target="_blank"><img src="gifs/ad2.gif" style="width:90%;" /></a>
+                <br><br>
+                <a href="https://www.rightel.ir/twenty?utm_source=bannerweb&utm_medium=twenty&utm_campaign=twenty&utm_content=isna" target="_blank"><img src="gifs/ad3.gif" style="width:90%;" /></a>
+
+            </div>
+
+            <div class="column4">
+
+                <div class="newsPar" style="border:none; box-shadow: 0px 0px 0px 0px #8e94be; background-color: inherit;">
+                    <div class="imgSet">
+                        <img src="images/pic10.jpg" class="smallPic" style="width:300px; height:150px; z-index:-1;"/>
+                        <div class="top-left"> COVID 19 </div>
+                    </div>
+                    <h5>واکسیناسیون معلمان و والدین شانس کرونا را کم کرده است</h5><br>
+                    <p>کارشناس بیماری‌های واگیر معاونت بهداشتی دانشگاه علوم پزشکی بوشهر گفت: واکسیناسیون والدین و معلمین مدارس بر علیه Covid-۱۹ از یک سو و رعایت توصیه‌های بهداشتی از سوی دانش‌آموزان از سوی دیگر باعث می‌شود که شانس انتقال بیماری و پیامدهای ناشی از آن کاهش یابد...</p>
+                    <a href="News/10.html">ادامه مطلب</a><br>
+
+                </div>
+
+                <hr style="border-color:#424874;">
+
+                <br>
+                <div class="newsPar" style="border:none; box-shadow: 0px 0px 0px 0px #8e94be;background-color: inherit;">
+                    <div class="imgSet">
+                    <img src="images/pic5.jpg" class="smallPic" style="width:300px; height:150px;" />
+                    <div class="top-left"> اقتصادی </div>
+                    </div>
+                    <h5>ماده اولیه تولید کارت ملی داخلی‌سازی می‌شود / تولید موفق پلی‌کربنات گرید پزشکی در ایران</h5><br>
+                    <p>به گزارش خبرنگار اقتصادی خبرگزاری تسنیم، رضا صالح احمدی، مدیر عامل شرکت پتروشیمی خوزستان در نشستی خبری اظهار داشت: پتروشیمی خوزستان تنها تولیدکننده پلی‌کربنات در ایران است و پلی‌کربنات با ظرفیت تولید 25 هزار تن در سال برای مصارف صنایع، مخابرات، الکترونیک...</p>
+                    <a href="News/5.html">ادامه مطلب</a><br>
+                </div>
+
+                <br><hr style="border-color:#424874;"><br>
+
+
+                <div class="newsPar" style="border:none; box-shadow: 0px 0px 0px 0px #8e94be;background-color: inherit;">
+                    <div class="imgSet">
+                        <img src="images/pic3.jpg" class="smallPic" style="width:300px; height:150px;" />
+                        <div class="top-left"> سیاسی </div>
+                    </div>
+                    <h5>وزیر کشور در بیرجند: دیپلماسی فعال با کشورهای همسایه را دنبال می‌کنیم/ سند آمایش سرزمینی ‌کل ایران تهیه شد</h5><br>
+                    <p>به گزارش خبرگزاری تسنیم از بیرجند، «احمد وحیدی» که امروز ظهر به منظور تکریم «حمید ملانوری» استاندار سابق و معارفه «جواد قناعت» استاندار جدید استان خراسان جنوبی...</p>
+                    <a href="News/3.html">ادامه مطلب</a><br>
+                </div>
+
+
+                <br><hr style="border-color:#424874;"><br>
+
+
+                <div class="newsPar" style="border:none; box-shadow: 0px 0px 0px 0px #8e94be;background-color: inherit;">
+                    <div class="imgSet">
+                        <img src="images/pic11.jpg" class="smallPic" style="width:300px; height:150px;" />
+                        <div class="top-left"> سرگرمی </div>
+                    </div>
+                    <h5>آشنایی با دره ماه؛ غیرقابل سکونت ترین نقطه روی کره زمین</h5><br>
+                    <p>کشور شیلی یکی از زیباترین کشور های آمریکای جنوبی به شمار می رود. جذابیت های دیدنی و تفریحاتی زیادی در این کشور وجود دارد. بزرگ ترین استخر جهان، در این کشور قرار دارد که در سرتاسر دنیا نمیتوان مانند آن را پیدا کرد...</p>
+                    <br>
+                    <a href="News/11.html">ادامه مطلب</a><br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--footer-->
+    <div class="footer">
+        <input type="submit"  class="searchBtn" value="🔎︎" style="border:none; color:white; font-size:20px; background-color:inherit; margin-right:0; height:40px;" />
+        <input type="text" class="searchBox" placeholder="به دنبال چیزی میگردید؟" />
+
+
+        <div class="row">
+
+            <div class="footer1" >
+                <br>
+                <a href="https://instagram.com/ali_2oo2_k?utm_medium=copy_link" target="_blank"><img src="images/insta.svg"  style="width:50px; height:50px;" class="instaBtn" /></a>
+                <br><a href="https://t.me/ayda_as94" target="_blank"><img src="images/tel.png" style="width:40px; height:40px;" class="instaBtn" /></a>
+                <br><br><a href="https://twitter.com/Ali200255642227?t=pjxtXPWwxoQErmHhBFh_-w&s=09" target="_blank"><img src="images/tweet.png" style="width:40px; height:40px; border-radius:50%;" class="instaBtn" /></a>
+            </div>
+            <div class="footer1">
+                <br>
+                <a href="https://t.me/Ali_2002_k" target="_blank"><img src="images/in.png"  style="width:50px; height:50px;" class="instaBtn" /></a>
+                <br><a href="#" target="_blank"><img src="images/what.png" style="width:40px; height:40px;" class="instaBtn" /></a>
+                <br><a href="#" target="_blank"><img src="images/pin.png" style="width:60px; height:60px; " class="instaBtn" /></a>
+
+            </div>
+
+            <div class="footer1" id="phone">
+
+                <address >
+                    <br><a href="mailto:indigor761@gmail.com" style="color:white; text-decoration:none; font-size: 17px;">indigor761@gmail.com</a><br>
+                    <br><a href="mailto:alikhalpoor@gmail.com" style="color:white; text-decoration:none; font-size: 17px;">alikhalpoor@gmail.com</a><br>
+                    <br><br><a href="tel: 09383795330" style="color:white; text-decoration:none; font-size: 17px;">09383795330</a><br><br>
+                    <a href="tel:09335107705" style="color:white; text-decoration:none; font-size: 17px;">09335107705</a>
+                </address>
+            </div>
+            <div class="footer1" id="footerlogo"> <img src="images/logo.jpg" style="box-shadow: 0px 0px 20px 0px #1a1a1a; width:220px; height:140px; border-radius:50%; border-top-left-radius:100px; border-bottom-left-radius:50px; border-top-right-radius:50px; border-bottom-right-radius:100px;"/></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+
+<script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) { showDivs(slideIndex += n);}
+
+function currentDiv(n) { showDivs(slideIndex = n);}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace("colorr", "");
+  }
+  x[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += "color";
+}
+</script>

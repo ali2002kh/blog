@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{% static 'lightMode.css' %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="icon" href="Icon/icon.png">
+        <title>{% block title %}{% endblock %}</title>
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    </head>
+    <body>
+        <h2><a href="{% url 'articles:list' %}" >logo</a></h2>
+        <nav>
+            <ul>
+                {% if user.is_authenticated %}         
+                    <li>
+                        <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">logout</button>
+                        </form>
+                    </li>
+                    <li>
+                        <a href="{% url 'articles:create' %}">create article</a>
+                    </li>
+                {% else %}    
+                    <li>
+                        <a href="{% url 'accounts:login' %}">login</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'accounts:signup' %}">sign up</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+        <div class="wrapper">
+            {% block content %}{% endblock%}
+        </div>
+    </body>
+</html>
