@@ -18,8 +18,8 @@ class Post(models.Model):
         return self.body[:50] + ' ...'
     
 class Comment(models.Model):
-    parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE, related_name='Parent')
-    child = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE, related_name='Child')
+    parent = models.ForeignKey('Comment', null=True, blank=True, on_delete=models.CASCADE, related_name='Parent')
+    child = models.ForeignKey('Comment', null=True, blank=True, on_delete=models.CASCADE, related_name='Child')
     body = models.TextField()
     author = models.ForeignKey(User, default=None, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, default=None, on_delete=models.CASCADE)

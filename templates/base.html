@@ -31,10 +31,15 @@
                 </label>
                 <label class="logo"> CNN </label>
                 <ul>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'accounts:logout' %}"><b>خروج</b></a></li>
+    
+                    <li><a href="{% url 'management:index' %}"><b>پنل مدیریت</b></a></li>
+                    {% else %}
                     <li><a href="{% url 'accounts:login' %}"><b>ورود</b></a></li>
     
                     <li><a href="{% url 'accounts:signup' %}"><b>ثبت نام</b></a></li>
-    
+                    {% endif %}
                     <li><a href="#" id="darkLight" style="padding:30px;"><b>☽</b></a></li>
     
                     <li id="drop"><a id="empty">

@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>edit</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+        <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+    </head>
+    <body>
+        <div class="create-article">
+            <h2>Edit post</h2>
+            <form class="site-form" action="{% url 'management:create' %}" method="post" enctype="multipart/form-data">
+                
+                {% csrf_token %}
+
+                title : <input type="text" name="title" required value="{{ post.title }}"><br><br>
+                body : <textarea cols="40" id="id_body" name="body" value="{{ post.body }}" rows="10" required data-processed="0" data-config="{&quot;skin&quot;: &quot;moono-lisa&quot;, &quot;toolbar_Basic&quot;: [[&quot;Source&quot;, &quot;-&quot;, &quot;Bold&quot;, &quot;Italic&quot;]], &quot;toolbar_Full&quot;: [[&quot;Styles&quot;, &quot;Format&quot;, &quot;Bold&quot;, &quot;Italic&quot;, &quot;Underline&quot;, &quot;Strike&quot;, &quot;SpellChecker&quot;, &quot;Undo&quot;, &quot;Redo&quot;], [&quot;Link&quot;, &quot;Unlink&quot;, &quot;Anchor&quot;], [&quot;Image&quot;, &quot;Flash&quot;, &quot;Table&quot;, &quot;HorizontalRule&quot;], [&quot;TextColor&quot;, &quot;BGColor&quot;], [&quot;Smiley&quot;, &quot;SpecialChar&quot;], [&quot;Source&quot;]], &quot;toolbar&quot;: &quot;Full&quot;, &quot;height&quot;: 291, &quot;width&quot;: 835, &quot;filebrowserWindowWidth&quot;: 940, &quot;filebrowserWindowHeight&quot;: 725, &quot;language&quot;: &quot;en-us&quot;}" data-external-plugin-resources="[]" data-id="id_body" data-type="ckeditortype"></textarea><br><br>
+                image : <input type="file" name="image" value="{{ post.image }}" accept="image/*" id="id_image"><br><br>
+                
+
+                <input type="submit" value="update">
+            </form>
+        </div>
+    </body>
+</html>
