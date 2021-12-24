@@ -1,63 +1,9 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{% static 'lightMode.css' %}">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="icon" href="Icon/icon.png">
-    <title>Home</title>
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-</head>
-<body>
-<div id="container">
+{% extends 'base.html' %}
 
-    <div id="top"></div>
+{% block title %}home{% endblock  %}
 
-    <div id="header">
-
-        <a href="#top" style=" padding:10px 15px; font-size:20px; color:#424874; z-index:1; position:fixed; bottom:30px; right:30px;  background-color:white; border-radius:50%;" ><i class="fa fa-angle-up"></i></a>
-
-        <nav>
-            <input type="checkbox" id="check">
-            <label for="check" class="check-btn">
-                <i class="fas fa-bars"></i>
-            </label>
-
-            <label class="logo">
-                <img src="images/logo.jpg" style="width:90px; height:70px; margin-top:5px; border-top-left-radius:100px; border-bottom-left-radius:50px; border-top-right-radius:50px; border-bottom-right-radius:100px;  box-shadow: 0px 0px 20px 0px #1a1a1a;"/>
-            </label>
-            <label class="logo"> CNN </label>
-            <ul>
-                <li><a href="Log in and Sign up page/Login.html"><b>ورود</b></a></li>
-
-                <li><a href="Log in and Sign up page/SignUp.html"><b>ثبت نام</b></a></li>
-
-                <li><a href="#" id="darkLight" style="padding:30px;"><b>☽</b></a></li>
-
-                <li id="drop"><a id="empty">
-                    <div class="dropdown" >
-                        <button href="#" style="padding: 29px 29px;" class="dropbtn"><i class="fa fa-caret-down"></i><b> صفحه اخبار </b></button>
-                        <div class="dropdown-content" >
-                            <a href="List of news/newsList.html#siasi">سیاسی</a>
-                            <a href="List of news/newsList.html#eghtesadi" >اقتصادی</a>
-                            <a href="List of news/newsList.html#tech" >تکنولوژی</a>
-                            <a href="List of news/newsList.html#covid" >covid 19</a>
-                            <a href="List of news/newsList.html#fun" >سرگرمی</a>
-                            <a href="List of news/newsList.html#elmi" >علمی</a>
-                            <a href="List of news/newsList.html#farhangi" >فرهنگی</a>
-                        </div>
-                    </div>
-                </a></li>
-                <li>
-                    <a href="index.html" ><b> صفحه اصلی </b><i class="fa fa-fw fa-home"></i></a>
-                </li>
-            </ul>
-        </nav>
-
-        <!--end of nav bar-->
-<div class="row">
+{% block content %}
+        <div class="row">
         <div class="column6">
             <div class="mainPar" style="width:100%;">
                 <img src="images/pic9.jpg" class="smallPic" />
@@ -93,13 +39,8 @@
                 <button class="slideNumbers" onclick="currentDiv(3)" ></button>
 
                 <button class="slideShowBtn" onclick="plusDivs(1)" style="margin-left:20%;">❯</button>
-
-
-
-
-
         </div>
-</div>
+    </div>
 
 
     </div>
@@ -178,46 +119,11 @@
             </div>
         </div>
     </div>
+{% endblock %}
+    
+    
 
-    <!--footer-->
-    <div class="footer">
-        <input type="submit"  class="searchBtn" value="🔎︎" style="border:none; color:white; font-size:20px; background-color:inherit; margin-right:0; height:40px;" />
-        <input type="text" class="searchBox" placeholder="به دنبال چیزی میگردید؟" />
-
-
-        <div class="row">
-
-            <div class="footer1" >
-                <br>
-                <a href="https://instagram.com/ali_2oo2_k?utm_medium=copy_link" target="_blank"><img src="images/insta.svg"  style="width:50px; height:50px;" class="instaBtn" /></a>
-                <br><a href="https://t.me/ayda_as94" target="_blank"><img src="images/tel.png" style="width:40px; height:40px;" class="instaBtn" /></a>
-                <br><br><a href="https://twitter.com/Ali200255642227?t=pjxtXPWwxoQErmHhBFh_-w&s=09" target="_blank"><img src="images/tweet.png" style="width:40px; height:40px; border-radius:50%;" class="instaBtn" /></a>
-            </div>
-            <div class="footer1">
-                <br>
-                <a href="https://t.me/Ali_2002_k" target="_blank"><img src="images/in.png"  style="width:50px; height:50px;" class="instaBtn" /></a>
-                <br><a href="#" target="_blank"><img src="images/what.png" style="width:40px; height:40px;" class="instaBtn" /></a>
-                <br><a href="#" target="_blank"><img src="images/pin.png" style="width:60px; height:60px; " class="instaBtn" /></a>
-
-            </div>
-
-            <div class="footer1" id="phone">
-
-                <address >
-                    <br><a href="mailto:indigor761@gmail.com" style="color:white; text-decoration:none; font-size: 17px;">indigor761@gmail.com</a><br>
-                    <br><a href="mailto:alikhalpoor@gmail.com" style="color:white; text-decoration:none; font-size: 17px;">alikhalpoor@gmail.com</a><br>
-                    <br><br><a href="tel: 09383795330" style="color:white; text-decoration:none; font-size: 17px;">09383795330</a><br><br>
-                    <a href="tel:09335107705" style="color:white; text-decoration:none; font-size: 17px;">09335107705</a>
-                </address>
-            </div>
-            <div class="footer1" id="footerlogo"> <img src="images/logo.jpg" style="box-shadow: 0px 0px 20px 0px #1a1a1a; width:220px; height:140px; border-radius:50%; border-top-left-radius:100px; border-bottom-left-radius:50px; border-top-right-radius:50px; border-bottom-right-radius:100px;"/></div>
-        </div>
-    </div>
-</div>
-</body>
-</html>
-
-
+{% block script %}
 <script>
 var slideIndex = 1;
 showDivs(slideIndex);
@@ -242,3 +148,4 @@ function showDivs(n) {
   dots[slideIndex-1].className += "color";
 }
 </script>
+{% endblock %}

@@ -11,7 +11,6 @@ def signup_view(request):
             return redirect('home')  
         else:
             pass       
-    
     return render(request, 'accounts/signup.html')
 
 

@@ -6,7 +6,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, default=None, on_delete=models.CASCADE)
     visited = models.IntegerField(default=0)
     promote = models.BooleanField(default=False)
-    body = RichTextField()
+    body = RichTextField(blank=True, null=True)
     date = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=100)
     image = models.ImageField(default="default.jpg", blank=True)
