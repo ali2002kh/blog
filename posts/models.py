@@ -9,7 +9,8 @@ class Post(models.Model):
     body = RichTextField(blank=True, null=True)
     date = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=100)
-    image = models.ImageField(default="default.jpg", blank=True)
+    image = models.ImageField(default=False)
+    noc = models.IntegerField(default=0)
     
     def __str__(self):
         return self.title
@@ -18,12 +19,12 @@ class Post(models.Model):
         return self.body[:50] + ' ...'
     
 class Comment(models.Model):
-    parent = models.ForeignKey('Comment', null=True, blank=True, on_delete=models.CASCADE, related_name='Parent')
-    child = models.ForeignKey('Comment', null=True, blank=True, on_delete=models.CASCADE, related_name='Child')
+    parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE, related_name='subcomments')
     body = models.TextField()
-    author = models.ForeignKey(User, default=None, on_delete=models.CASCADE)
-    post = models.ForeignKey(Post, default=None, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
     date = models.DateTimeField(auto_now_add=True)
+    is_confirmed = models.BooleanField(default=False)
     
     def __str__(self):
         return f"{self.author.username}: {self.body}"

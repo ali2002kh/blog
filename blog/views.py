@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render
 from posts.models import Post
 
@@ -15,4 +16,9 @@ def home(request):
         'promoted_posts': promoted_posts,
         'last_recent_posts': last_recent_posts
     }
+    
+    paginator_main = Paginator(posts, 5)
+    firstPage = request.GET.get('page1') 
+    context['posts'] = paginator_main.get_page(firstPage) 
+    
     return render(request, 'home/home.html', context=context)

@@ -14,12 +14,8 @@ def create(request):
             instance = form.save(commit = False)
             instance.author = request.user
             instance.save()
-            return redirect('management:index')
-        
-    else:
-        form = CreatePostForm()   
-    
-    return render(request,'management/create.html', {'form':form})
+            return redirect('management:index')   
+    return render(request,'management/create.html')
 
 
 def edit(request, post_id):
