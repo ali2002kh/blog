@@ -1,6 +1,8 @@
+from django.db.models.query_utils import Q
 from django.shortcuts import redirect, render
 from posts.forms import CreatePostForm
-from posts.models import Post
+from posts.models import Comment, Post
+from django.views.generic import UpdateView
 
 def index(request):
     user = request.user
@@ -17,15 +19,26 @@ def create(request):
             return redirect('management:index')   
     return render(request,'management/create.html')
 
-
-def edit(request, post_id):
-    if request.method == 'POST':
-        pass
-    else:
-        post = Post.objects.get(id=post_id)
-
-    return render(request, 'management/edit.html', {'posts': post})
+class edit(UpdateView):
+    model = Post
+    form_class = CreatePostForm
+    template_name = 'management/edit.html'
+    
 
 def delete(request, post_id):
     Post.objects.get(id=post_id).delete()
     return redirect('management:index')
+
+def comments(request, post_id):
+    post = Post.objects.get(id=post_id)
+    comments = Comment.objects.all().filter(Q(post=post) & Q(is_confirmed=False))
+    return render(request, 'management/comments.html', {'comments': comments})
+
+def confirm(request, comment_id):
+    Comment.objects.get(id=comment_id).update(is_confirmed=True)
+    return redirect('management:comments')
+
+def reject(request, comment_id):
+    Comment.objects.get(id=comment_id).delete()
+    return redirect('management:comments')
+    

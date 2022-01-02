@@ -3,149 +3,130 @@
 {% block title %}home{% endblock  %}
 
 {% block content %}
-        <div class="row">
-        <div class="column6">
-            <div class="mainPar" style="width:100%;">
-                <img src="images/pic9.jpg" class="smallPic" />
-                چرا بعضی‌ها کرونا نمی‌گیرند؟<br>
-                دانشمندان با تحلیل نمونه‌های حاد از بیماران کرونایی پی برده‌اند که چگونه تفاوت‌های ژنتیکی بر سلول‌های ایمنی ما تأثیر می‌گذارد...
-            <br><br>
-                <a href="News/9.html"> ادامه مطلب </a><br>
+<div id="header" >
+
+    <div class="row">
+    <div class="column5" style="text-align:center;">
+
+        <div style="max-width:800px; padding-left:50px; align-items:center; margin:auto;">
+            {% for post in promoted_posts %}
+                <a href="{% url 'posts:detail' post.id %}"><img class="mySlides" src="{{ post.image.url }}" alt="{{ post.title }}" /></a>
+            {% endfor %}
+        </div>
+            <br>
+            <button class="slideShowBtn"  onclick="plusDivs(-1)" style="margin-right:20%;" >❮</button>
+
+            <button class="slideNumbers" onclick="currentDiv(1)" ></button>
+            <button class="slideNumbers" onclick="currentDiv(2)" ></button>
+            <button class="slideNumbers" onclick="currentDiv(3)" ></button>
+
+            <button class="slideShowBtn" onclick="plusDivs(1)" style="margin-left:20%;">❯</button>
+    </div>
+</div>
+</div>
+
+<div id="middle">
+    <a href="#" id="darkLight" style="padding:10px 17px; font-size:20px; color:#424874; z-index:1; position:fixed; bottom:30px; left:30px;  background-color:white; border-radius:50%;"><b>☽</b></a>
+    <a href="#top" style="padding:10px 15px; font-size:20px; color:#424874; z-index:1; position:fixed; bottom:30px; right:30px;  background-color:white; border-radius:50%;" ><i class="fa fa-angle-up"></i></a>
+
+    <div class="row">
+
+        <div class="column3">
+
+            <div class="sidenav" style="border-top-left-radius:10px; border-top-right-radius:10px;" id="side">
+                <h5 style="color: white; padding: 20px 30px;">پربازدید ترین‌ها</h5>
+                {% for post in most_visited_posts %}
+                    <a href="{% url 'posts:detail' post.id %}" style=" direction:rtl; border-radius:5px;"><img src="{{ post.image.url }}" class="smallPic" />
+                    {{post.snippet|safe}}</a>
+                {% endfor %}
             </div>
 
-            <br><br>
-
-            <div class="mainPar" style="width:100%;">
-                <img src="images/pic6.jpg" class="smallPic" />
-                واگذاری کشت‌وصنعت مغان به یک بدهکار کلان بانکی چگونه رخ داد؟ /مروری بر داستان حراج «نگین کشاورزی ایران»<br>
-                در حالیکه اخیراً زمزمه‌هایی مبنی بر امکان اعاده دادرسی در ...
-
-                <br><br><a href="News/6.html"> ادامه مطلب</a><br>
+            <div class="sidenav" style="border-top-left-radius:10px; border-top-right-radius:10px;" id="side2">
+                <h5 style="color: white; padding: 20px 30px;">آخرین خبرها</h5>
+                {% for post in last_recent_posts %}
+                    <a href="{% url 'posts:detail' post.id %}" style=" direction:rtl; border-radius:5px;"><img src="{{ post.image.url }}" class="smallPic" />
+                    {{post.snippet|safe}}</a>
+                {% endfor %}
             </div>
+
+            <iframe src="https://exiracademy.org" style="width:100%;"><img src="../gifs/ad.gif" style="width:90%; margin:5% auto 5%;" /></iframe>
+            <br><br>
+            <a href="https://www.si24.ir/telematics?utm_source=isna&utm_medium=banner&utm_campaign=telematics" target="_blank" ><img src="../gifs/ad2.gif" style="width:90%;" /></a>
+            <br><br>
+            <a href="https://www.rightel.ir/twenty?utm_source=bannerweb&utm_medium=twenty&utm_campaign=twenty&utm_content=isna" target="_blank"><img src="../gifs/ad3.gif" style="width:90%;" /></a>
 
         </div>
-        <div class="column5" style="text-align:center; " >
 
-            <div style="max-width:800px; padding-left:50px;">
-                <img class="mySlides" src="images/pic2.webp" >
-                <img class="mySlides" src="images/pic7.jpg" >
-                <img class="mySlides" src="images/pic9.jpg" >
-            </div>
-                <br>
-                <button class="slideShowBtn"  onclick="plusDivs(-1)" style="margin-right:20%;" >❮</button>
+        <div class="column4">
 
-                <button class="slideNumbers" onclick="currentDiv(1)" ></button>
-                <button class="slideNumbers" onclick="currentDiv(2)" ></button>
-                <button class="slideNumbers" onclick="currentDiv(3)" ></button>
-
-                <button class="slideShowBtn" onclick="plusDivs(1)" style="margin-left:20%;">❯</button>
-        </div>
-    </div>
-
-
-    </div>
-
-    <div id="middle">
-
-        <div class="row">
-
-            <div class="column3">
-
-                <div class="newsPar" style="box-shadow:0 0 0 0; border-radius:10px; width:90%; border:none; width:100%; margin-top:70px; margin-right:100px;"><img src="images/error.png" style="width:100%; float:none; font-size:10px; " />رنگ صفحه‌ی مرگ که در ویندوز ۱۱ از آبی به مشکی تغییریافته بود در آپدیت جدید ویندوز ۱۱ به آبی بازگشته است. <br><a href="News/1.html">ادامه مطلب</a><br></div>
-
-                <br><br><br>
-
-                <a href="https://exiracademy.org" target="_blank"><img src="gifs/ad.gif" style="width:90%; margin:5% auto 5%;" /></a>
-                <br>
-                <a href="https://www.si24.ir/telematics?utm_source=isna&utm_medium=banner&utm_campaign=telematics" target="_blank"><img src="gifs/ad2.gif" style="width:90%;" /></a>
-                <br><br>
-                <a href="https://www.rightel.ir/twenty?utm_source=bannerweb&utm_medium=twenty&utm_campaign=twenty&utm_content=isna" target="_blank"><img src="gifs/ad3.gif" style="width:90%;" /></a>
-
-            </div>
-
-            <div class="column4">
-
+            {% for post in posts %}
                 <div class="newsPar" style="border:none; box-shadow: 0px 0px 0px 0px #8e94be; background-color: inherit;">
                     <div class="imgSet">
-                        <img src="images/pic10.jpg" class="smallPic" style="width:300px; height:150px; z-index:-1;"/>
-                        <div class="top-left"> COVID 19 </div>
+                        <img src="{{ post.image.url }}" class="smallPic" style="width:300px; height:150px; z-index:-1;"/>
                     </div>
-                    <h5>واکسیناسیون معلمان و والدین شانس کرونا را کم کرده است</h5><br>
-                    <p>کارشناس بیماری‌های واگیر معاونت بهداشتی دانشگاه علوم پزشکی بوشهر گفت: واکسیناسیون والدین و معلمین مدارس بر علیه Covid-۱۹ از یک سو و رعایت توصیه‌های بهداشتی از سوی دانش‌آموزان از سوی دیگر باعث می‌شود که شانس انتقال بیماری و پیامدهای ناشی از آن کاهش یابد...</p>
-                    <a href="News/10.html">ادامه مطلب</a><br>
+                    <h5>{{ post.title }}</h5><br>
+                    <p>{{ post.snippet|safe }}</p>
+                    <a href="{% url 'posts:detail' post.id %}">ادامه مطلب</a><br>
 
                 </div>
 
                 <hr style="border-color:#424874;">
 
                 <br>
-                <div class="newsPar" style="border:none; box-shadow: 0px 0px 0px 0px #8e94be;background-color: inherit;">
-                    <div class="imgSet">
-                    <img src="images/pic5.jpg" class="smallPic" style="width:300px; height:150px;" />
-                    <div class="top-left"> اقتصادی </div>
-                    </div>
-                    <h5>ماده اولیه تولید کارت ملی داخلی‌سازی می‌شود / تولید موفق پلی‌کربنات گرید پزشکی در ایران</h5><br>
-                    <p>به گزارش خبرنگار اقتصادی خبرگزاری تسنیم، رضا صالح احمدی، مدیر عامل شرکت پتروشیمی خوزستان در نشستی خبری اظهار داشت: پتروشیمی خوزستان تنها تولیدکننده پلی‌کربنات در ایران است و پلی‌کربنات با ظرفیت تولید 25 هزار تن در سال برای مصارف صنایع، مخابرات، الکترونیک...</p>
-                    <a href="News/5.html">ادامه مطلب</a><br>
-                </div>
-
-                <br><hr style="border-color:#424874;"><br>
+            {% endfor %}
 
 
-                <div class="newsPar" style="border:none; box-shadow: 0px 0px 0px 0px #8e94be;background-color: inherit;">
-                    <div class="imgSet">
-                        <img src="images/pic3.jpg" class="smallPic" style="width:300px; height:150px;" />
-                        <div class="top-left"> سیاسی </div>
-                    </div>
-                    <h5>وزیر کشور در بیرجند: دیپلماسی فعال با کشورهای همسایه را دنبال می‌کنیم/ سند آمایش سرزمینی ‌کل ایران تهیه شد</h5><br>
-                    <p>به گزارش خبرگزاری تسنیم از بیرجند، «احمد وحیدی» که امروز ظهر به منظور تکریم «حمید ملانوری» استاندار سابق و معارفه «جواد قناعت» استاندار جدید استان خراسان جنوبی...</p>
-                    <a href="News/3.html">ادامه مطلب</a><br>
-                </div>
-
-
-                <br><hr style="border-color:#424874;"><br>
-
-
-                <div class="newsPar" style="border:none; box-shadow: 0px 0px 0px 0px #8e94be;background-color: inherit;">
-                    <div class="imgSet">
-                        <img src="images/pic11.jpg" class="smallPic" style="width:300px; height:150px;" />
-                        <div class="top-left"> سرگرمی </div>
-                    </div>
-                    <h5>آشنایی با دره ماه؛ غیرقابل سکونت ترین نقطه روی کره زمین</h5><br>
-                    <p>کشور شیلی یکی از زیباترین کشور های آمریکای جنوبی به شمار می رود. جذابیت های دیدنی و تفریحاتی زیادی در این کشور وجود دارد. بزرگ ترین استخر جهان، در این کشور قرار دارد که در سرتاسر دنیا نمیتوان مانند آن را پیدا کرد...</p>
-                    <br>
-                    <a href="News/11.html">ادامه مطلب</a><br>
-                </div>
-            </div>
+        <div class="pagination">
+            {% if posts.has_previous %}
+                <a href="/?page={{ posts.previous_page_number }}">prev</a>
+            {% endif %}
+            <span class="page-current">
+                Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+            </span>
+            {% if posts.has_next %}
+                <a href="/?page={{ posts.next_page_number }}">next</a>
+            {% endif %}
         </div>
+
+
     </div>
+
+
+</div>
 {% endblock %}
     
     
 
 {% block script %}
 <script>
-var slideIndex = 1;
-showDivs(slideIndex);
-
-function plusDivs(n) { showDivs(slideIndex += n);}
-
-function currentDiv(n) { showDivs(slideIndex = n);}
-
-function showDivs(n) {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("");
-  if (n > x.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = x.length}
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace("colorr", "");
-  }
-  x[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += "color";
-}
-</script>
+    var slideIndex = 1;
+    showDivs(slideIndex);
+    
+    function plusDivs(n) {
+        showDivs(slideIndex += n);
+    }
+    
+    function currentDiv(n) {
+        showDivs(slideIndex = n);
+    }
+    
+    function showDivs(n) {
+      var counter;
+      var pics = document.getElementsByClassName("mySlides");
+    
+      if (n > pics.length) {
+          slideIndex = 1
+      }
+    
+      if (n < 1) {
+          slideIndex = pics.length
+      }
+    
+      for (counter = 0; counter < pics.length; counter++) {
+        pics[counter].style.display = "none";
+      }
+    
+      pics[slideIndex-1].style.display = "block";
+    }
+    </script>
 {% endblock %}

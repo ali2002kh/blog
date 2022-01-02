@@ -9,7 +9,7 @@ def home(request):
     last_recent_posts = []
     last_recent_posts = posts[:5]
     most_visited_posts = posts.order_by('-visited')[:5]
-    promoted_posts = posts.filter(promote=True)
+    promoted_posts = posts.filter(promote=True)[:3]
     context = {
         'posts': posts,
         'most_visited_posts': most_visited_posts,
@@ -17,8 +17,8 @@ def home(request):
         'last_recent_posts': last_recent_posts
     }
     
-    paginator_main = Paginator(posts, 5)
-    firstPage = request.GET.get('page1') 
+    paginator_main = Paginator(posts, 8)
+    firstPage = request.GET.get('page') 
     context['posts'] = paginator_main.get_page(firstPage) 
     
     return render(request, 'home/home.html', context=context)

@@ -1,6 +1,8 @@
 from django.db.models.query_utils import Q
-from django.shortcuts import render
-from posts.models import Post
+from django.shortcuts import redirect, render
+from management.views import comments
+from posts.forms import addCommentForm
+from posts.models import Comment, Post
 from django.core.paginator import Paginator
 
 def posts_list(request):
@@ -58,13 +60,13 @@ def posts_list(request):
         if valid_date:
             context['posts'] = sortedPosts.filter(date__range=[start, end])
             
-    if 'search' in request.POST:
+    if 'searching' in request.POST:
         searchedWord = request.POST['search']
         sortedPosts = Post.objects.filter(Q(title__icontains=searchedWord) |
                                           Q(body__icontains=searchedWord))
     
-    paginator_list = Paginator(sortedPosts, 5)
-    firstPage = request.GET.get('page1') 
+    paginator_list = Paginator(sortedPosts, 8)
+    firstPage = request.GET.get('page') 
     context['posts'] = paginator_list.get_page(firstPage) 
     
     return render(request, 'posts/posts_list.html', context=context)
@@ -72,5 +74,30 @@ def posts_list(request):
 
 def post_detail(request, post_id):
     post = Post.objects.get(id=post_id)
-    return render(request, 'posts/post_detail.html', {'post': post})
+    comments = Comment.objects.all().filter(Q(is_confirmed=True) & Q(parent=None) & Q(post=post))
+    return render(request, 'posts/post_detail.html', {'post': post, 'comments': comments})
+
+
+def addComment(request, post_id):
+    post = Post.objects.get(id=post_id)
+    form = addCommentForm(request.POST)
+    if form.is_valid():
+        instance = form.save(commit = False)
+        instance.author = request.user
+        instance.post = post
+        instance.save()
+    return redirect('posts:detail', post_id)   
+
+def replyComment(request, comment_id):
+    comment = Comment.objects.get(id=comment_id)
+    post = comment.post
+    form = addCommentForm(request.POST)
+    if form.is_valid():
+        instance = form.save(commit = False)
+        instance.author = request.user
+        instance.post = post
+        instance.parent = comment
+        instance.save()
+    return redirect('posts:detail', post.id)
+
 

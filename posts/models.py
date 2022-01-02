@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 from ckeditor.fields import RichTextField
+from django.urls import reverse
 
 class Post(models.Model):
     author = models.ForeignKey(User, default=None, on_delete=models.CASCADE)
@@ -17,6 +18,9 @@ class Post(models.Model):
     
     def snippet(self):
         return self.body[:50] + ' ...'
+    
+    def get_absolute_url(self):
+        return reverse('management:index')
     
 class Comment(models.Model):
     parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE, related_name='subcomments')

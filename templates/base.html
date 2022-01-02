@@ -6,76 +6,69 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static 'lightMode.css' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="icon" href="Icon/icon.png">
+    <link rel="icon" href="{% static 'icon.png' %}">
     <title>{% block title %}{% endblock %}</title>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 <body>
 
-        <div id="top"></div>
-
-        <div id="container">
-    
-        <div id="header">
-        
-            <a href="#top" style=" padding:10px 15px; font-size:20px; color:#424874; z-index:1; position:fixed; bottom:30px; right:30px;  background-color:white; border-radius:50%;" ><i class="fa fa-angle-up"></i></a>
+    <div id="top"></div>
+    <div id="container">
             <header>
-            <nav>
-                <input type="checkbox" id="check">
-                <label for="check" class="check-btn">
-                    <i class="fas fa-bars"></i>
-                </label>
-    
-                <label class="logo">
-                    <img src="images/logo.jpg" style="width:90px; height:70px; margin-top:5px; border-top-left-radius:100px; border-bottom-left-radius:50px; border-top-right-radius:50px; border-bottom-right-radius:100px;  box-shadow: 0px 0px 20px 0px #1a1a1a;"/>
-                </label>
-                <label class="logo"> CNN </label>
-                <ul>
-                    {% if user.is_authenticated %}
-                    <li><a href="{% url 'accounts:logout' %}"><b>خروج</b></a></li>
-    
-                    <li><a href="{% url 'management:index' %}"><b>پنل مدیریت</b></a></li>
-                    {% else %}
-                    <li><a href="{% url 'accounts:login' %}"><b>ورود</b></a></li>
-    
-                    <li><a href="{% url 'accounts:signup' %}"><b>ثبت نام</b></a></li>
-                    {% endif %}
-                    <li><a href="#" id="darkLight" style="padding:30px;"><b>☽</b></a></li>
-    
-                    <li id="drop"><a id="empty">
-                        <div class="dropdown" >
-                            <a href="{% url 'posts:list' %}" style="padding: 29px 29px;" class="dropbtn"><b> صفحه اخبار </b></a>
-                        </div></a>
-                    </li>
-                    <li>
-                        <a href="{% url 'home' %}" ><b> صفحه اصلی </b><i class="fa fa-fw fa-home"></i></a>
-                    </li>
-                </ul>
-            </nav>
+                <nav>
+                    <input type="checkbox" id="check">
+                    <label for="check" class="check-btn">
+                        <i class="fa fa-bars"></i>
+                    </label>
+                    <label class="logo">
+                        <img src="{% static 'logo.jpg' %}" style="width:120px; height:70px; margin-top:5px; border-top-left-radius:100px; border-bottom-left-radius:50px; border-top-right-radius:50px; border-bottom-right-radius:100px;  box-shadow: 0px 0px 20px 0px #1a1a1a;"/>
+                    </label>
+                    <ul>
+                        {% if user.is_authenticated %}
+                        <li><a href="{% url 'accounts:logout' %}"><b>خروج</b></a></li>
+        
+                        <li><a href="{% url 'management:index' %}"><b>پنل مدیریت</b></a></li>
+                        {% else %}
+                        <li><a href="{% url 'accounts:login' %}"><b>ورود</b></i></a></li>
+        
+                        <li><a href="{% url 'accounts:signup' %}"><b>ثبت نام</b></a></li>
+                        {% endif %}
+                        <li class="navLabel"></li>
+                        <li id="drop"><a id="empty">
+                            <div class="dropdown" >
+                                <a href="{% url 'posts:list' %}" style="padding: 29px 29px;" class="dropbtn"><b> صفحه اخبار </b></a>
+                            </div>
+                        </a></li>
+                        <li>
+                            <a href="{% url 'home' %}" ><b> صفحه اصلی </b><i class="fa fa-fw fa-home"></i></a>
+                        </li>
+                    </ul>
+                </nav>
             </header>
+
             {% block content %}{% endblock%}
-            <div class="footer">
-                <input type="submit"  class="searchBtn" value="🔎︎" style="border:none; color:white; font-size:20px; background-color:inherit; margin-right:0; height:40px;" />
-                <input type="text" class="searchBox" placeholder="به دنبال چیزی میگردید؟" />
-
+            <footer class="footer">
+                <br><br>
+    
                 <div class="row">
-
+                    <br><br>
+    
                     <div class="footer1" >
                         <br>
-                        <a href="https://instagram.com/ali_2oo2_k?utm_medium=copy_link" target="_blank"><img src="images/insta.svg"  style="width:50px; height:50px;" class="instaBtn" /></a>
-                        <br><a href="https://t.me/ayda_as94" target="_blank"><img src="images/tel.png" style="width:40px; height:40px;" class="instaBtn" /></a>
-                        <br><br><a href="https://twitter.com/Ali200255642227?t=pjxtXPWwxoQErmHhBFh_-w&s=09" target="_blank"><img src="images/tweet.png" style="width:40px; height:40px; border-radius:50%;" class="instaBtn" /></a>
+                        <a href="https://instagram.com/ali_2oo2_k?utm_medium=copy_link" target="_blank"><i class="fab fa-instagram" style="font-size:30px; color:white;"></i> </a>
+                        <br><br><a href="https://t.me/ayda_as94" target="_blank"><i class="fab fa-telegram" style="font-size:30px; color:white;"></i></a>
+                        <br><br><a href="https://twitter.com/Ali200255642227?t=pjxtXPWwxoQErmHhBFh_-w&s=09" target="_blank"><i class="fab fa-twitter" style="font-size:30px; color:white;"></i></a>
                     </div>
                     <div class="footer1">
                         <br>
-                        <a href="https://t.me/Ali_2002_k" target="_blank"><img src="images/in.png"  style="width:50px; height:50px;" class="instaBtn" /></a>
-                        <br><a href="#" target="_blank"><img src="images/what.png" style="width:40px; height:40px;" class="instaBtn" /></a>
-                        <br><a href="#" target="_blank" class="fa fa-twitter"></a>
-
+                        <a href="https://t.me/Ali_2002_k" target="_blank"><i class="fab fa-linkedin" style="font-size:30px; color:white;"></i></a>
+                        <br><br><a href="https://wa.me/9383795330" target="_blank"><i class="fab fa-whatsapp" style="font-size:30px; color:white;"></i></a>
+                        <br><br><a href="https://www.pinterest.com/indigor761/" target="_blank"><i class="fab fa-pinterest" style="font-size:30px; color:white;"></i></a>
+    
                     </div>
-
+    
                     <div class="footer1" id="phone">
-
+    
                         <address >
                             <br><a href="mailto:indigor761@gmail.com" style="color:white; text-decoration:none; font-size: 17px;">indigor761@gmail.com</a><br>
                             <br><a href="mailto:alikhalpoor@gmail.com" style="color:white; text-decoration:none; font-size: 17px;">alikhalpoor@gmail.com</a><br>
@@ -83,10 +76,10 @@
                             <a href="tel:09335107705" style="color:white; text-decoration:none; font-size: 17px;">09335107705</a>
                         </address>
                     </div>
-                    <div class="footer1" id="footerlogo"> <img src="images/logo.jpg" style="box-shadow: 0px 0px 20px 0px #1a1a1a; width:220px; height:140px; border-radius:50%; border-top-left-radius:100px; border-bottom-left-radius:50px; border-top-right-radius:50px; border-bottom-right-radius:100px;"/></div>
+                    <a href="{% url 'home' %}" class="footer1" id="footerlogo"> <img src="{% static 'logo.jpg' %}" style=" width:220px; height:140px; border-radius:50%; border-top-left-radius:100px; border-bottom-left-radius:50px; border-top-right-radius:50px; border-bottom-right-radius:100px;"/></a>
                 </div>
-            </div>
-        </div>
-    </body>
+            </footer>
+    </div>
+</body>
 </html>
 {% block script %}{% endblock%}
