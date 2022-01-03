@@ -631,7 +631,7 @@ a.active, a:hover{
          font-size:15px;
     }
 
-    .footer1 a: hover{
+    .footer1 a:hover{
         width:60px;
         height:60px;
         display: none;
@@ -828,21 +828,82 @@ font-family:tahoma;
 
 }
 
-    .pagination {
-      display: inline-block;
-      margin-left:25%;
-    }
+.pagination {
+    display: inline-block;
+    margin-left:25%;
+}
 
-    .pagination a {
-      color: black;
-      float: left;
-      padding: 8px 16px;
-      text-decoration: none;
-      transition: background-color .3s;
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
 
-    }
+}
 
-    .pagination a.active {
-      background-color: #424874;
-      color: white;
-    }
+.pagination a.active {
+    background-color: #424874;
+    color: white;
+}
+
+#profile-header{
+    background-color: #F4EEFF;
+    height:80px;
+    width: 100%;
+
+}
+
+.posts{
+
+}
+.posts div{
+    box-shadow:0 0 0 0;
+    border-radius:10px;
+    width:300px;
+    border:none;
+    margin-top:70px;
+    margin-right:40px;
+    float: right;
+    margin-bottom:70px;
+}
+
+.posts div img{
+    width:100%; float:none; font-size:10px;
+}
+
+.post-btn{
+    margin:15px;
+    padding:10px 15px;
+    color: white;
+    background-color: #A6B1E1;
+    border:none;
+    border-radius: 40px;
+    font-size:15px;
+}
+
+.post-btn:hover{
+    color:#A6B1E1;
+    background-color: white;
+    cursor:pointer;
+    transition: 0.6s;
+}
+
+.cc{
+    background-color: #F4EEFF;
+    margin: auto;
+    width:80%;
+    height: 100px;
+    margin-top:20px;
+    border-radius: 20px;
+    color:#424874;
+    padding:40px;
+    text-align:right;
+    font-size:20px;
+    direction:rtl;
+
+}
+
+.cc button:hover{
+    cursor:pointer;
+}

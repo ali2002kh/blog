@@ -109,6 +109,8 @@ def addComment(request, post_id):
         instance = form.save(commit = False)
         instance.author = user
         instance.post = post
+        if user.id == post.author.id:
+            instance.is_confirmed = True
         instance.save()
     return redirect('posts:detail', post_id)   
 
@@ -126,6 +128,8 @@ def replyComment(request, comment_id):
         instance.author = user
         instance.post = post
         instance.parent = comment
+        if user.id == post.author.id:
+            instance.is_confirmed = True
         instance.save()
     return redirect('posts:detail', post.id)
 

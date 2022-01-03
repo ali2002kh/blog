@@ -1,19 +1,24 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>management panel</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
-        <a href="{% url 'management:create' %}"><b>پست جدید</b></a><br><br>
-        <ul>
+{% extends 'base.html' %}
+
+{% block title %}management panel{% endblock  %}
+
+{% block content %}
+
+<div id="profile-header">
+    <span style="float:left; margin:30px; color: #4248b4; font-size:20px;">{{ user.username }}</span>
+    <a href="{% url 'management:create' %}" class="post-btn" style="float:right; margin:20px; border-radius:10px;">پست جدید +</a>
+</div>
+<div>
+    <div class="posts">
         {% for post in posts %}
-            <li>{{ post.title }}</li>
+            <div class="newsPar">
+                <img src="{{ post.image.url }}"/>
+                <h4>{{ post.title }}</h4></h4>
+                <br><a href="{% url 'management:delete' post.id %}" class="post-btn" ><b>x</b></a>
+                <a href="{% url 'management:comments' post.id %}" class="post-btn" > 💬</a>
+                <a href="{% url 'management:edit' post.pk %}" class="post-btn" > ✎</a>
+            </div>
         {% endfor %}
-        </ul>
-    </body>
-</html>
+    </div>
+</div>
+{% endblock %}

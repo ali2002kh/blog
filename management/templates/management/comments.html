@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}comments{% endblock  %}
+
+{% block content %}
+
+{% for comment in comments %}
+    <div class="cc">
+        <h3 style="float:right;">{{ comment.author.username }} : </h3>
+        <p style="margin-right: 150px; ">{{ comment.body }}</p>
+        <a href="{% url 'management:reject' comment.id %}" style="float:left; padding:5px 10px; margin-top:-30px; margin-left:0px; font-size:18px; background-color:#bf4040; color:white; border:none;">x</a>
+        <a href="{% url 'management:confirm' comment.id %}" style="float:left; padding:5px 10px; margin-top:-30px; margin-left:20px; font-size:16px; background-color:green; color:white; border:none;">✓</a>
+    </div>
+{% endfor %}
+{% endblock %}

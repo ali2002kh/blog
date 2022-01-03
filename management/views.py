@@ -39,7 +39,7 @@ def delete(request, post_id):
     except:
         return redirect('/accounts/login/?next=/management') 
     post = Post.objects.get(id=post_id)
-    if user.id == post.user.id:
+    if user.id == post.author.id:
         post.delete()
     return redirect('management:index')
 
@@ -50,7 +50,7 @@ def comments(request, post_id):
     except:
         return redirect('/accounts/login/?next=/management/'+str(post_id)+'/comments') 
     post = Post.objects.get(id=post_id)
-    if user.id == post.user.id:
+    if user.id == post.author.id:
         comments = Comment.objects.all().filter(Q(post=post) & Q(is_confirmed=False))
         return render(request, 'management/comments.html', {'comments': comments})
     return redirect('management:index')
@@ -62,7 +62,7 @@ def confirm(request, comment_id):
         user = User.objects.get(id=request.session['login'])
     except:
         return redirect('/accounts/login/?next=/management/'+str(post.id)+'/comments') 
-    if comment.post.user.id == user.id:
+    if comment.post.author.id == user.id:
         comment.is_confirmed = True
         post.noc = post.noc + 1
         post.save()
@@ -77,7 +77,7 @@ def reject(request, comment_id):
         user = User.objects.get(id=request.session['login'])
     except:
         return redirect('/accounts/login/?next=/management/'+str(post.id)+'/comments') 
-    if comment.post.user.id == user.id:
+    if comment.post.author.id == user.id:
         comment.delete()
     return redirect('management:comments', post.id)
     
