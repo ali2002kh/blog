@@ -17,11 +17,16 @@
                 <input type="submit"  name="searching" value="🔎︎" style="border:none; color: #424874; font-size:20px; background-color:inherit; margin-right:0; height:40px;" />
 
                 <br><br><button name="base" class="filter_element" value="date" type="submit">جدید ترین ها</button>
+                {% if request.session.base == 'date' %}<i class="fa fa-fw fa-check"></i>{% endif %}
                 <br><button name="base" class="filter_element" value="comment" type="submit">پر کامنت ترین ها</button>
+                {% if request.session.base == 'comment' %}<i class="fa fa-fw fa-check"></i>{% endif %}
                 <br><button name="base" class="filter_element" value="view" type="submit">پربازدید ترین ها</button>
+                {% if request.session.base == 'view' %}<i class="fa fa-fw fa-check"></i>{% endif %}
 
                 <br><br><button name="sort" class="filter_element" value="asc" type="submit">صعودی</button>
+                {% if request.session.sort == 'asc' %}<i class="fa fa-fw fa-check"></i>{% endif %}
                 <br><button name="sort" class="filter_element" value="des" type="submit">نزولی</button>
+                {% if request.session.sort == 'des' %}<i class="fa fa-fw fa-check"></i>{% endif %}
 
                 <br><br><input type="date" class="filter_element" style="padding-left:10px;" name="start">
                 <br><input type="date" class="filter_element" style="padding-left:10px;" name="end">

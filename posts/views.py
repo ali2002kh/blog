@@ -1,9 +1,9 @@
 from django.db.models.query_utils import Q
 from django.shortcuts import redirect, render
-from management.views import comments
 from posts.forms import addCommentForm
 from posts.models import Comment, Post
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 
 def posts_list(request):
     last_recent_posts = []
@@ -14,13 +14,21 @@ def posts_list(request):
     base = 'date'
     sort = 'des'
     
+    if 'base' in request.session:
+        base = request.session['base']
+        
+    if 'sort' in request.session:
+        sort = request.session['sort']
+    
     if 'base' in request.POST:
         if not request.POST['base'] == '':
             base = request.POST['base']
+            request.session['base'] = base
             
     if 'sort' in request.POST:
         if not request.POST['sort'] == '':
             sort = request.POST['sort']
+            request.session['sort'] = sort
             
     sortedPosts = []
     
@@ -50,7 +58,7 @@ def posts_list(request):
         valid_date = True
         try:
             start = request.POST['start']
-            end = request.POST['e_date']
+            end = request.POST['end']
         except:
             valid_date = False
         else:
@@ -58,14 +66,14 @@ def posts_list(request):
             context['end'] = end
                        
         if valid_date:
-            context['posts'] = sortedPosts.filter(date__range=[start, end])
+            sortedPosts = sortedPosts.filter(date__range=[start, end])
             
     if 'searching' in request.POST:
         searchedWord = request.POST['search']
         sortedPosts = Post.objects.filter(Q(title__icontains=searchedWord) |
                                           Q(body__icontains=searchedWord))
     
-    paginator_list = Paginator(sortedPosts, 8)
+    paginator_list = Paginator(sortedPosts, 3)
     firstPage = request.GET.get('page') 
     context['posts'] = paginator_list.get_page(firstPage) 
     
@@ -73,11 +81,23 @@ def posts_list(request):
 
 
 def post_detail(request, post_id):
+    last_recent_posts = []
+    most_visited_posts = []
+    last_recent_posts = Post.objects.all().order_by('-date')[:5]
+    most_visited_posts = Post.objects.all().order_by('-visited')[:5]
     post = Post.objects.get(id=post_id)
+    post.visited = post.visited + 1
+    post.save()
     comments = Comment.objects.all().filter(Q(is_confirmed=True) & Q(parent=None) & Q(post=post))
-    return render(request, 'posts/post_detail.html', {'post': post, 'comments': comments})
+    context = {
+        'most_visited_posts': most_visited_posts,
+        'last_recent_posts': last_recent_posts,
+        'post' : post,
+        'comments': comments
+    }    
+    return render(request, 'posts/post_detail.html', context)
 
-
+@login_required(login_url= "/accounts/login")  
 def addComment(request, post_id):
     post = Post.objects.get(id=post_id)
     form = addCommentForm(request.POST)
@@ -88,6 +108,7 @@ def addComment(request, post_id):
         instance.save()
     return redirect('posts:detail', post_id)   
 
+@login_required(login_url= "/accounts/login")  
 def replyComment(request, comment_id):
     comment = Comment.objects.get(id=comment_id)
     post = comment.post

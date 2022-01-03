@@ -9,7 +9,23 @@
     <a href="#" id="darkLight" style="padding:10px 17px; font-size:20px; color:#424874; z-index:1; position:fixed; bottom:30px; left:30px;  background-color:white; border-radius:50%;"><b>☽</b></a>
 
     <div class="row">
-        <div class="column1"></div>
+        <div class="column1">
+            <div class="sidenav" style="border-top-left-radius:10px; border-top-right-radius:10px;" id="side">
+                <h5 style="color: white; padding: 20px 30px;">پربازدید ترین‌ها</h5>
+                {% for post in most_visited_posts %}
+                    <a href="{% url 'posts:detail' post.id %}" style=" direction:rtl; border-radius:5px;"><img src="{{ post.image.url }}" class="smallPic" />
+                    {{post.snippet|safe}}</a>
+                {% endfor %}
+            </div>
+
+            <div class="sidenav" style="border-top-left-radius:10px; border-top-right-radius:10px;" id="side2">
+                <h5 style="color: white; padding: 20px 30px;">آخرین خبرها</h5>
+                {% for post in last_recent_posts %}
+                    <a href="{% url 'posts:detail' post.id %}" style=" direction:rtl; border-radius:5px;"><img src="{{ post.image.url }}" class="smallPic" />
+                    {{post.snippet|safe}}</a>
+                {% endfor %}
+            </div>
+        </div>
 
         <div class="column2">
             <img src="{{ post.image.url }}" class="imgPost"/>
@@ -37,13 +53,13 @@
                         </div>
                     </div>
                     {% for subcomment in comment.subcomments.all %}
-                        {% comment %} {% if subcomment.is_confirmed %} {% endcomment %}
+                        {% if subcomment.is_confirmed %}
                             <div class="reply">
                                 <span style="font-size:12px; background-color:#A6B1E1; color:white; padding:5px; border-radius:50px;">در پاسخ به {{ subcomment.parent.author.username }}↶</span>
                                 <h3>{{ subcomment.author.username }}</h3>
                                 <p>{{ subcomment.body }}</p>
                             </div>
-                        {% comment %} {% endif %} {% endcomment %}
+                        {% endif %}
                     {% endfor %}
                 {% endfor %}
             

@@ -24,7 +24,7 @@
                         <img src="{% static 'logo.jpg' %}" style="width:120px; height:70px; margin-top:5px; border-top-left-radius:100px; border-bottom-left-radius:50px; border-top-right-radius:50px; border-bottom-right-radius:100px;  box-shadow: 0px 0px 20px 0px #1a1a1a;"/>
                     </label>
                     <ul>
-                        {% if user.is_authenticated %}
+                        {% if request.session.login %}
                         <li><a href="{% url 'accounts:logout' %}"><b>خروج</b></a></li>
         
                         <li><a href="{% url 'management:index' %}"><b>پنل مدیریت</b></a></li>
