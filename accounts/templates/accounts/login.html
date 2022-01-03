@@ -11,6 +11,14 @@
 <body>
 <div class="main-container">
 
+    <div>
+        {% if message %}
+            <div class="message">
+                {{ message }}
+            </div>            
+        {% endif %}
+    </div>
+
     <form class="loginSignUp-box"  action="{% url 'accounts:login' %}" method="post">
 
         <div class="login">

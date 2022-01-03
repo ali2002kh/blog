@@ -43,8 +43,9 @@
                     <div class="comment">
                         <h2>{{ comment.author.username }}</h2>
                         <p>{{ comment.body }}</p>
+                        <button class="reply-btn" id="btn-reply_{{forloop.counter}}"><b> پاسخ </b> </button>
                         <br><br>
-                        <div id="rep">
+                        <div id="rep_{{forloop.counter}}" style="display:none;">
                             <form method="POST" action="{% url 'posts:replyComment' comment.id %}">
                             {% csrf_token %}
                             <textarea name="body" style="resize:none; width:500px; height:100px; padding: 10px;" placeholder="پاسخ شما"></textarea>
@@ -74,4 +75,22 @@
         </div>
     </div>
 </div>
+{% endblock %}
+{% block script %}
+<script type="text/javascript">
+    {% for comment in comments %}
+        $(document).ready(function(){
+            $("#btn-reply_{{forloop.counter}}").click(function(){
+            
+                var x = $("#rep_{{forloop.counter}}");
+                if (x.css("display") === "none") {
+                    x.css({"display":"block"});
+                }
+                else {
+                    x.css({"display":"none"});
+                }
+            })
+        }) 
+    {% endfor %}
+</script>
 {% endblock %}

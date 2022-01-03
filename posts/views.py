@@ -1,9 +1,9 @@
+from django.contrib.auth.models import User
 from django.db.models.query_utils import Q
 from django.shortcuts import redirect, render
 from posts.forms import addCommentForm
 from posts.models import Comment, Post
 from django.core.paginator import Paginator
-from django.contrib.auth.decorators import login_required
 
 def posts_list(request):
     last_recent_posts = []
@@ -97,25 +97,33 @@ def post_detail(request, post_id):
     }    
     return render(request, 'posts/post_detail.html', context)
 
-@login_required(login_url= "/accounts/login")  
+
 def addComment(request, post_id):
+    try:
+        user = User.objects.get(id=request.session['login'])
+    except:
+        return redirect('/accounts/login/?next=/posts/'+str(post_id)) 
     post = Post.objects.get(id=post_id)
     form = addCommentForm(request.POST)
     if form.is_valid():
         instance = form.save(commit = False)
-        instance.author = request.user
+        instance.author = user
         instance.post = post
         instance.save()
     return redirect('posts:detail', post_id)   
 
-@login_required(login_url= "/accounts/login")  
+
 def replyComment(request, comment_id):
     comment = Comment.objects.get(id=comment_id)
     post = comment.post
+    try:
+        user = User.objects.get(id=request.session['login'])
+    except:
+        return redirect('/accounts/login/?next=/posts/'+str(post.id)) 
     form = addCommentForm(request.POST)
     if form.is_valid():
         instance = form.save(commit = False)
-        instance.author = request.user
+        instance.author = user
         instance.post = post
         instance.parent = comment
         instance.save()

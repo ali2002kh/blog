@@ -11,8 +11,16 @@
 <body>
 <div class="main-container">
 
-    <form class="loginSignUp-box" action="{% url 'accounts:signup' %}" method="post">
+    <div>
+        {% if message %}
+            <div class="message">
+                {{ message }}
+            </div>            
+        {% endif %}
+    </div>
 
+    <form class="loginSignUp-box" action="{% url 'accounts:signup' %}" method="post">
+        {% csrf_token %}
         <div class="login">
 
             <div class="form-control1">
@@ -21,7 +29,7 @@
                     <h2>ثبت نام</h2>
                 </div>
 
-                <input type="text" class="tbox" placeholder="username" name="" required />
+                <input type="text" class="tbox" placeholder="username" name="username" required />
             </div>
 
             <div class="form-control1">
@@ -31,7 +39,7 @@
             <div class="form-control1">
                 <input type="password" class="tbox" placeholder="repeat password" name="password2" required />
             </div>
-            {% csrf_token %}
+            
             <div class="form-control1">
                 <input type="submit" value="ثبت نام کن" class="btn" style="margin-top:20px;"/>
             </div>

@@ -9,9 +9,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
         <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+        <link rel="stylesheet" href="{% static 'create&edit.css'%}">
     </head>
     <body>
             <h2>Create a new post</h2>
+            <div>
+                {% if message %}
+                    <div class="message">
+                        {{ message }}
+                    </div>            
+                {% endif %}
+            </div>
             <form class="site-form" action="{% url 'management:create' %}" method="post" enctype="multipart/form-data">
                 
                 {% csrf_token %}
