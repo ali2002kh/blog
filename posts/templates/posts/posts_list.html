@@ -13,11 +13,12 @@
 
             <form class="filter" method="post">
                 {% csrf_token %}
-                <input type="text" name="search" style="width:80%; border-radius:10px; border:1px solid #A6B1E1;  margin-right:10px; height:30px; padding-right:10px;" placeholder="جست و جو..." />
-                <input type="submit"  name="searching" value="🔎︎" style="border:none; color: #424874; font-size:20px; background-color:inherit; margin-right:0; height:40px;" />
+                <input type="text" name="search" style="width:70%; border-radius:10px; border:1px solid #A6B1E1;  margin-right:10px; height:30px; padding-right:10px;" placeholder="جست و جو..." value={{ request.session.search }}>
+                <input type="submit"  name="searching" value="🔎︎" style="border:none; color: #424874; font-size:20px; background-color:inherit; margin-right:0; height:40px;"/>
+                <input type="submit"  name="clear_search" value="♻" style="border:none; color: #424874; font-size:20px; background-color:inherit; margin-right:0; height:40px;"/>
 
                 <br><br><button name="base" class="filter_element" value="date" type="submit">جدید ترین ها</button>
-                {% if request.session.base == 'date' %}<i class="fa fa-fw fa-check"></i>{% endif %}
+                {% if request.session.base == 'date' or not 'base' in request.session %}<i class="fa fa-fw fa-check"></i>{% endif %}
                 <br><button name="base" class="filter_element" value="comment" type="submit">پر کامنت ترین ها</button>
                 {% if request.session.base == 'comment' %}<i class="fa fa-fw fa-check"></i>{% endif %}
                 <br><button name="base" class="filter_element" value="view" type="submit">پربازدید ترین ها</button>
@@ -26,10 +27,11 @@
                 <br><br><button name="sort" class="filter_element" value="asc" type="submit">صعودی</button>
                 {% if request.session.sort == 'asc' %}<i class="fa fa-fw fa-check"></i>{% endif %}
                 <br><button name="sort" class="filter_element" value="des" type="submit">نزولی</button>
-                {% if request.session.sort == 'des' %}<i class="fa fa-fw fa-check"></i>{% endif %}
+                {% if request.session.sort == 'des' or not 'sort' in request.session %}<i class="fa fa-fw fa-check"></i>{% endif %}
 
-                <br><br><input type="date" class="filter_element" style="padding-left:10px;" name="start">
-                <br><input type="date" class="filter_element" style="padding-left:10px;" name="end">
+                <br><br><input type="date" class="filter_element" style="padding-left:10px;" name="start" value="{{ request.session.start }}">
+                <br><input type="date" class="filter_element" style="padding-left:10px;" name="end" value="{{ request.session.end }}">
+                <br><button class="filter_element" type="submit" name="clear_filter">پاک کردن فیلتر</button>
                 <br><button class="filter_element" type="submit" name="filter">فیلتر</button>
 
             </form>
@@ -85,4 +87,12 @@
     </div>
 </div>
 
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+    {% if error %}
+        alert("{{error}}")
+    {% endif %}
+</script>
 {% endblock %}

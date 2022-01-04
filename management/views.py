@@ -4,6 +4,7 @@ from django.shortcuts import redirect, render
 from posts.forms import CreatePostForm
 from posts.models import Comment, Post
 from django.views.generic import UpdateView
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
@@ -38,7 +39,10 @@ def delete(request, post_id):
         user = User.objects.get(id=request.session['login'])
     except:
         return redirect('/accounts/login/?next=/management') 
-    post = Post.objects.get(id=post_id)
+    try:
+        post = Post.objects.get(id=post_id)
+    except:
+        return render(request,'management/post404.html', {'post_id' : post_id})
     if user.id == post.author.id:
         post.delete()
     return redirect('management:index')
@@ -49,14 +53,20 @@ def comments(request, post_id):
         user = User.objects.get(id=request.session['login'])
     except:
         return redirect('/accounts/login/?next=/management/'+str(post_id)+'/comments') 
-    post = Post.objects.get(id=post_id)
+    try:
+        post = Post.objects.get(id=post_id)
+    except:
+        return render(request,'management/post404.html', {'post_id' : post_id})
     if user.id == post.author.id:
         comments = Comment.objects.all().filter(Q(post=post) & Q(is_confirmed=False))
         return render(request, 'management/comments.html', {'comments': comments})
     return redirect('management:index')
 
 def confirm(request, comment_id):
-    comment = Comment.objects.get(id=comment_id)
+    try:
+        comment = Comment.objects.get(id=comment_id)
+    except:
+        return render(request,'management/comment404.html', {'comment_id' : comment_id})
     post = comment.post
     try:
         user = User.objects.get(id=request.session['login'])
@@ -71,7 +81,10 @@ def confirm(request, comment_id):
 
 
 def reject(request, comment_id):
-    comment = Comment.objects.get(id=comment_id)
+    try:
+        comment = Comment.objects.get(id=comment_id)
+    except:
+        return render(request,'management/comment404.html', {'comment_id' : comment_id})
     post = comment.post
     try:
         user = User.objects.get(id=request.session['login'])
@@ -86,13 +99,3 @@ class edit(UpdateView):
     model = Post
     form_class = CreatePostForm
     template_name = 'management/edit.html'
-    
-    def get(self, request, *args, **kwargs):
-        try:
-            user = User.objects.get(id=request.session['login'])
-        except:
-            return redirect('/accounts/login/?next=/management/') 
-        return render(request, self.template_name, {'form': self.form_class})
-    
-    def post(self, request, *args, **kwargs):
-        return render(request, self.template_name, {'form': self.form_class})
