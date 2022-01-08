@@ -279,6 +279,7 @@ a.active, a:hover{
    display: block;
    text-align:right;
    border: 2px solid #DCD6F7;
+    height: 130px;
 }
 
 .sidenav a:hover {
@@ -499,7 +500,6 @@ a.active, a:hover{
 
 @media (max-width:749px){
     .column6 {
-            float: center;
             width: 90%;
             margin-bottom:100px;
             border-radius:8px;
@@ -560,7 +560,6 @@ a.active, a:hover{
     .column5 {display: none;}
 
     .column6 {
-            float: center;
             width: 90%;
             margin-bottom:100px;
             border-radius:8px;
@@ -580,7 +579,6 @@ a.active, a:hover{
 
     /* news explanation */
     .column4 {
-            float: center;
             width: 100%;
             margin-bottom:100px;
             border-radius:8px;
@@ -670,10 +668,10 @@ a.active, a:hover{
 
 /*making navbar responsive*/
 
-.navLabel{ width:800px;}
+.navLabel{ width:850px;}
 
-   @media screen and (max-width: 1500px) {
-        .navLabel{ width:700px;}
+   @media screen and (min-width: 1500px) {
+        .navLabel{ width:750px;}
 
    }
 
@@ -829,20 +827,35 @@ font-family:tahoma;
 }
 
 .pagination {
-    display: inline-block;
-    margin-left:25%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
 }
 
+
 .pagination a {
-    color: black;
-    float: left;
+    color: #424874;
+    float: right;
     padding: 8px 16px;
     text-decoration: none;
     transition: background-color .3s;
+    text-align: center;
+    border-radius: 0px;
 
 }
 
-.pagination a.active {
+
+.pagination span {
+    color: #424874;
+    float: right;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+text-align: center;
+
+}
+
+.pagination a:hover {
     background-color: #424874;
     color: white;
 }
@@ -873,7 +886,6 @@ font-family:tahoma;
 }
 
 .post-btn{
-    margin:15px;
     padding:10px 15px;
     color: white;
     background-color: #A6B1E1;
@@ -904,6 +916,15 @@ font-family:tahoma;
 
 }
 
-.cc button:hover{
+.cc button{
     cursor:pointer;
+}
+
+.dd{
+      color: #424874;
+      text-align: right;
+      padding:25px;
+      line-height:1.5;
+      direction:rtl;
+      font-family: arial;
 }

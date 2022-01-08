@@ -6,8 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404</title>
 </head>
-<body>
-    <h1>کامنت با آیدی  {{ comment_id }} یافت نشد</h1>
-    <a href="{% url 'management:index' %}">بازگشت به پنل کاربری</a> 
+<body style="background-color: #DCD6F7" >
+
+<div style="text-align: center; color: #424874; margin-top:20%; ">
+    <h1> !کامنت با آیدی   {{ comment_id }} یافت نشد </h1>
+    <a style="color: #7989d2" href="{% url 'management:index' %}">بازگشت به پنل کاربری</a>
+</div>
 </body>
 </html>

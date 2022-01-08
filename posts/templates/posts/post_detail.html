@@ -14,7 +14,7 @@
                 <h5 style="color: white; padding: 20px 30px;">پربازدید ترین‌ها</h5>
                 {% for post in most_visited_posts %}
                     <a href="{% url 'posts:detail' post.id %}" style=" direction:rtl; border-radius:5px;"><img src="{{ post.image.url }}" class="smallPic" />
-                    {{post.snippet|safe}}</a>
+                    {{post.snippet|striptags|safe}}</a>
                 {% endfor %}
             </div>
 
@@ -22,7 +22,7 @@
                 <h5 style="color: white; padding: 20px 30px;">آخرین خبرها</h5>
                 {% for post in last_recent_posts %}
                     <a href="{% url 'posts:detail' post.id %}" style=" direction:rtl; border-radius:5px;"><img src="{{ post.image.url }}" class="smallPic" />
-                    {{post.snippet|safe}}</a>
+                    {{post.snippet|striptags|safe}}</a>
                 {% endfor %}
             </div>
         </div>
@@ -30,9 +30,11 @@
         <div class="column2">
             <img src="{{ post.image.url }}" class="imgPost"/>
             <br>
-            <p class="par">{{ post.date }}</p>
-            <h1 class="par">{{ post.title }}</h1>
-            <p class="par">{{ post.body|safe }}</p>
+            <p class="dd" style="font-size: 16px;"> {{ post.date }}</p>
+            <h1 class="dd" style="font-size: 25px; padding-top: 0px; padding-bottom:60px; ">{{ post.title }}</h1>
+            <p class="dd">{{ post.body|striptags|safe}}</p>
+
+            <h3 class="dd" style="font-size: 16px;"><p>متن منتشر شده توسط:</p>{{ post.author }}</h3>
 
             <h1 style="margin-top:100px; direction:rtl; padding-right:30px; font-size:25px; color:#424874;" > نظرات شما</h1>
             <br><hr style="border-color:#424874;">

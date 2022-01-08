@@ -8,15 +8,15 @@
     <span style="float:left; margin:30px; color: #4248b4; font-size:20px;">{{ user.username }}</span>
     <a href="{% url 'management:create' %}" class="post-btn" style="float:right; margin:20px; border-radius:10px;">پست جدید +</a>
 </div>
-<div>
+<div style="min-height: 500px;">
     <div class="posts">
         {% for post in posts %}
-            <div class="newsPar">
-                <img src="{{ post.image.url }}"/>
+            <div class="newsPar" style="min-height:300px;">
+                <img src="{{ post.image.url }}" style="height: 150px; width: 240px;"/>
                 <h4>{{ post.title }}</h4></h4>
-                <br><a href="{% url 'management:delete' post.id %}" class="post-btn" ><b>x</b></a>
-                <a href="{% url 'management:comments' post.id %}" class="post-btn" > 💬</a>
-                <a href="{% url 'management:edit' post.pk %}" class="post-btn" > ✎</a>
+                <br><a href="{% url 'management:delete' post.id %}" class="post-btn" style="margin: 0px 15px 0px 15px; padding: 10px 15px; font-size: 15px;"><b>x</b></a>
+                <a href="{% url 'management:comments' post.id %}" class="post-btn" style="margin: 0px 15px 0px 15px; padding: 10px 15px; font-size: 15px;"> 🗨</a>
+                <a href="{% url 'management:edit' post.pk %}" class="post-btn" style="margin: 0px 15px 0px 15px; padding: 10px 15px; font-size: 15px;"> ✎</a>
             </div>
         {% endfor %}
     </div>

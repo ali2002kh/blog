@@ -41,7 +41,7 @@
                 <h5 style="color: white; padding: 20px 30px;">پربازدید ترین‌ها</h5>
                 {% for post in most_visited_posts %}
                     <a href="{% url 'posts:detail' post.id %}" style=" direction:rtl; border-radius:5px;"><img src="{{ post.image.url }}" class="smallPic" />
-                    {{post.snippet|safe}}</a>
+                    {{post.snippet|striptags}}</a>
                 {% endfor %}
             </div>
 
@@ -49,7 +49,7 @@
                 <h5 style="color: white; padding: 20px 30px;">آخرین خبرها</h5>
                 {% for post in last_recent_posts %}
                     <a href="{% url 'posts:detail' post.id %}" style=" direction:rtl; border-radius:5px;"><img src="{{ post.image.url }}" class="smallPic" />
-                    {{post.snippet|safe}}</a>
+                    {{post.snippet|striptags}}</a>
                 {% endfor %}
             </div>
 
@@ -73,13 +73,13 @@
 
             <div class="pagination">
                 {% if posts.has_previous %}
-                <a href="/posts/?page={{ posts.previous_page_number }}">prev</a>
+                <a href="/posts/?page={{ posts.previous_page_number }}">&laquo;</a>
             {% endif %}
             <span class="page-current">
-                Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+                Page {{ posts.number }} of {{ posts.paginator.num_pages }}
             </span>
             {% if posts.has_next %}
-                <a href="/posts/?page={{ posts.next_page_number }}">next</a>
+                <a href="/posts/?page={{ posts.next_page_number }}">&raquo;</a>
             {% endif %}
             </div>
 

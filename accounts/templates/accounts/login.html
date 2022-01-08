@@ -8,7 +8,7 @@
     <link rel="icon" href="{% static 'icon.png' %}">
     <title>Login Page</title>
 </head>
-<body>
+<body style="background-image: url('{% static "sea.jfif"%}'); background-repeat: no-repeat; background-size: cover;">
 <div class="main-container">
 
     <div>
@@ -19,7 +19,7 @@
         {% endif %}
     </div>
 
-    <form class="loginSignUp-box"  action="{% url 'accounts:login' %}" method="post">
+    <form class="loginSignUp-box"  action="{% url 'accounts:login' %}" method="post" style="backdrop-filter: blur( 6.5px ); background: rgba( 255, 255, 255, 0.18 ); box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );">
 
         <div class="login">
 

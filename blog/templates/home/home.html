@@ -3,7 +3,7 @@
 {% block title %}home{% endblock  %}
 
 {% block content %}
-<div id="header" >
+<div id="header">
 
     <div class="row">
     <div class="column5" style="text-align:center;">
@@ -36,16 +36,17 @@
             <div class="sidenav" style="border-top-left-radius:10px; border-top-right-radius:10px;" id="side">
                 <h5 style="color: white; padding: 20px 30px;">پربازدید ترین‌ها</h5>
                 {% for post in most_visited_posts %}
-                    <a href="{% url 'posts:detail' post.id %}" style=" direction:rtl; border-radius:5px;"><img src="{{ post.image.url }}" class="smallPic" />
-                    {{post.snippet|safe}}</a>
+                    <a href="{% url 'posts:detail' post.id %}" style="height: 130px;  direction:rtl; border-radius:5px;">
+                    <img src="{{ post.image.url }}" class="smallPic" />
+                    {{post.snippet|striptags}}</a>
                 {% endfor %}
             </div>
 
             <div class="sidenav" style="border-top-left-radius:10px; border-top-right-radius:10px;" id="side2">
                 <h5 style="color: white; padding: 20px 30px;">آخرین خبرها</h5>
                 {% for post in last_recent_posts %}
-                    <a href="{% url 'posts:detail' post.id %}" style=" direction:rtl; border-radius:5px;"><img src="{{ post.image.url }}" class="smallPic" />
-                    {{post.snippet|safe}}</a>
+                    <a href="{% url 'posts:detail' post.id %}" style="height: 130px; direction:rtl; border-radius:5px;"><img src="{{ post.image.url }}" class="smallPic" />
+                    {{post.snippet|striptags}}</a>
                 {% endfor %}
             </div>
             
@@ -54,38 +55,41 @@
         <div class="column4">
 
             {% for post in posts %}
-                <div class="newsPar" style="border:none; box-shadow: 0px 0px 0px 0px #8e94be; background-color: inherit;">
-                    <div class="imgSet">
+                <div class="newsPar" style="border:none; background-color: inherit;">
+                    <div class="imgSet" style="height: 40px;">
                         <img src="{{ post.image.url }}" class="smallPic" style="width:300px; height:150px; z-index:-1;"/>
                     </div>
                     <h5>{{ post.title }}</h5><br>
                     <p>{{ post.snippet|safe }}</p>
-                    <a href="{% url 'posts:detail' post.id %}">ادامه مطلب</a><br>
+                    <a href="{% url 'posts:detail' post.id %}" style="margin-top:20px; ">ادامه مطلب</a><br>
 
                 </div>
 
-                <hr style="border-color:#424874;">
+                <hr style="border-color:#424874; margin-top: 50px;">
 
                 <br>
             {% endfor %}
 
 
         <div class="pagination">
+
             {% if posts.has_previous %}
-                <a href="/?page={{ posts.previous_page_number }}">prev</a>
+                <a href="/?page={{ posts.previous_page_number }}" style="font-size: 20px;" ><b>&laquo;</b></a>
             {% endif %}
             <span class="page-current">
-                Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+                Page {{ posts.number }} of {{ posts.paginator.num_pages }}
             </span>
             {% if posts.has_next %}
-                <a href="/?page={{ posts.next_page_number }}">next</a>
+                <a href="/?page={{ posts.next_page_number }}" style="font-size: 20px;"><b> &raquo; </b></a>
             {% endif %}
+
         </div>
 
 
     </div>
 
 
+</div>
 </div>
 {% endblock %}
     

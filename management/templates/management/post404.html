@@ -7,8 +7,10 @@
     <title>404</title>
     <link rel="stylesheet" href="{% static '404.css' %}">
 </head>
-<body>
-    <h1>پست با آیدی  {{ post_id }} یافت نشد</h1>
-    <a href="{% url 'management:index' %}">بازگشت به پنل کاربری</a> 
+<body style="background-color: #DCD6F7">
+    <div style="text-align: center; color: #424874; margin-top:20%; ">
+        <h1>!پست با آیدی  {{ post_id }} یافت نشد</h1>
+        <a style="color: #7989d2" href="{% url 'management:index' %}">بازگشت به پنل کاربری</a>
+    </div>
 </body>
 </html>
