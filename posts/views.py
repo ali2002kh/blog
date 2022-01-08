@@ -94,7 +94,7 @@ def posts_list(request):
         sortedPosts = Post.objects.filter(Q(title__icontains=request.session['search']) |
                                           Q(body__icontains=request.session['search']))
     
-    paginator_list = Paginator(sortedPosts, 3)
+    paginator_list = Paginator(sortedPosts, 9)
     firstPage = request.GET.get('page') 
     context['posts'] = paginator_list.get_page(firstPage) 
     

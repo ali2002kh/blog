@@ -3,8 +3,6 @@ from django.db.models.query_utils import Q
 from django.shortcuts import redirect, render
 from posts.forms import CreatePostForm
 from posts.models import Comment, Post
-from django.views.generic import UpdateView
-from django.contrib.auth.decorators import login_required
 
 
 def index(request):
@@ -95,7 +93,24 @@ def reject(request, comment_id):
     return redirect('management:comments', post.id)
     
 
-class edit(UpdateView):
-    model = Post
-    form_class = CreatePostForm
-    template_name = 'management/edit.html'
+def edit(request, post_id):
+    message = None
+    try:
+        user = User.objects.get(id=request.session['login'])
+    except:
+        return redirect('/accounts/login/?next=/management/'+str(post_id)+'/edit')
+    try:
+        post = Post.objects.get(id=post_id)
+    except:
+        return render(request,'management/post404.html', {'post_id' : post_id})
+    if user  != post.author:
+        return render(request,'management/403.html', {'post_id' : post_id})
+    if request.method == 'POST':
+        form = CreatePostForm(request.POST,request.FILES, instance=post)
+        if form.is_valid():
+            instance = form.save(commit = False)
+            instance.save()
+            return redirect('management:index')   
+        else:
+            message = 'اطلاعات پست را درست وارد کنید' 
+    return render(request,'management/edit.html', {'message': message, 'post':post})
