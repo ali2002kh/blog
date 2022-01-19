@@ -38,7 +38,7 @@
                 {% for post in most_visited_posts %}
                     <a href="{% url 'posts:detail' post.id %}" style="height: 130px;  direction:rtl; border-radius:5px;">
                     <img src="{{ post.image.url }}" class="smallPic" />
-                    {{post.snippet|striptags}}</a>
+                    {{post.snippet|striptags|safe}}</a>
                 {% endfor %}
             </div>
 
@@ -46,7 +46,7 @@
                 <h5 style="color: white; padding: 20px 30px;">آخرین خبرها</h5>
                 {% for post in last_recent_posts %}
                     <a href="{% url 'posts:detail' post.id %}" style="height: 130px; direction:rtl; border-radius:5px;"><img src="{{ post.image.url }}" class="smallPic" />
-                    {{post.snippet|striptags}}</a>
+                    {{post.snippet|striptags|safe}}</a>
                 {% endfor %}
             </div>
             
@@ -60,7 +60,7 @@
                         <img src="{{ post.image.url }}" class="smallPic" style="width:300px; height:150px; z-index:-1;"/>
                     </div>
                     <h5>{{ post.title }}</h5><br>
-                    <p>{{ post.snippet|safe }}</p>
+                    <p>{{ post.snippet|striptags|safe}}</p>
                     <a href="{% url 'posts:detail' post.id %}" style="margin-top:20px; ">ادامه مطلب</a><br>
 
                 </div>

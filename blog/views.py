@@ -17,7 +17,7 @@ def home(request):
         'last_recent_posts': last_recent_posts
     }
     
-    paginator_main = Paginator(posts, 6)
+    paginator_main = Paginator(posts, 5)
     firstPage = request.GET.get('page') 
     context['posts'] = paginator_main.get_page(firstPage) 
     
